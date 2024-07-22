@@ -29,13 +29,6 @@ function Form() {
       .then((res) => console.log(res));
   };
 
-  const getOptionValue = (index) => {
-    const filteredValue = questionAnswerSet.filter(
-      (eachSet) => eachSet.index === index
-    );
-    return filteredValue.answerType;
-  };
-
   const addNewQuestionAnswerSet = () => {
     setIndex((prevIndex) => prevIndex + 1);
     setQuestionAnswerSet([
@@ -53,20 +46,16 @@ function Form() {
   };
 
   const handleRadioAnswer = (e, index, optionIndex) => {
-    console.log(e, index, optionIndex, questionAnswerSet, "insideee");
     const changedQuestionAnswerSet = questionAnswerSet.map((qASet) => {
       if (index === qASet.index) {
         const mappedArray = qASet.options.map((eachOption, index) => {
           if (index === optionIndex) {
-            console.log("lala", e.target.value, eachOption);
             eachOption = { ...eachOption, checked: true };
           } else {
             eachOption = { ...eachOption, checked: false };
           }
           return eachOption;
         });
-
-        console.log("mapp", mappedArray);
         qASet = {
           ...qASet,
           options: mappedArray,
@@ -74,23 +63,19 @@ function Form() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setQuestionAnswerSet(changedQuestionAnswerSet);
   };
 
   const handleRadioTextAnswer = (e, index, optionIndex) => {
-    console.log(e, index, optionIndex, questionAnswerSet, "insideee");
     const changedQuestionAnswerSet = questionAnswerSet.map((qASet) => {
       if (index === qASet.index) {
         const mappedArray = qASet.options.map((eachOption, index) => {
           if (index === optionIndex) {
-            console.log("lala", e.target.value, eachOption);
             eachOption = { ...eachOption, value: e.target.value };
           }
           return eachOption;
         });
 
-        console.log("mapp", mappedArray);
         qASet = {
           ...qASet,
           options: mappedArray,
@@ -98,23 +83,19 @@ function Form() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setQuestionAnswerSet(changedQuestionAnswerSet);
   };
 
   const handleCheckedAnswer = (e, index, optionIndex) => {
-    console.log(e, index, optionIndex, questionAnswerSet, "insideee");
     const changedQuestionAnswerSet = questionAnswerSet.map((qASet) => {
       if (index === qASet.index) {
         const mappedArray = qASet.options.map((eachOption, index) => {
           if (index === optionIndex) {
-            console.log("lala", e.target.value, eachOption);
             eachOption = { ...eachOption, checked: true };
           }
           return eachOption;
         });
 
-        console.log("mapp", mappedArray);
         qASet = {
           ...qASet,
           options: mappedArray,
@@ -122,7 +103,6 @@ function Form() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setQuestionAnswerSet(changedQuestionAnswerSet);
   };
 
@@ -140,7 +120,6 @@ function Form() {
   };
 
   const addRadioOption = (index) => {
-    console.log(questionAnswerSet);
     const changedQuestionAnswerSet = questionAnswerSet.map((qASet) => {
       if (index === qASet.index) {
         qASet = {
@@ -150,23 +129,18 @@ function Form() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setQuestionAnswerSet(changedQuestionAnswerSet);
   };
   return (
     <div className="app-container">
       <h1>Let us create a form!</h1>
+      <label> Form Name: </label>
       <input
         type="text"
-        required={true}
+        required
         onChange={(e) => setFormName(e.target.value)}
+        className="input-class"
       ></input>
-      <button
-        className="new-question"
-        onClick={() => addNewQuestionAnswerSet()}
-      >
-        Click to add new question.
-      </button>
       {questionAnswerSet &&
         questionAnswerSet.map((questionAnswerSet, index) => (
           <div className="question-container">
@@ -176,7 +150,6 @@ function Form() {
               placeholder="Type a question..."
               onChange={(e) => handleQuestionSet(e, index)}
             />
-            {console.log(questionAnswerSet, "answerset")}
             <select
               value={questionAnswerSet.answerType}
               onChange={(e) => handleAnswerOptionChange(e, index)}
@@ -186,7 +159,7 @@ function Form() {
               <option name="radio">Radio</option>
               <option name="checked">Checked</option>
             </select>
-            <div className="answer-container">
+            <div className="answer-container width text-center mx-auto my-10">
               {questionAnswerSet.answerType === "TextBox" ? (
                 <input
                   type="text"
@@ -198,14 +171,10 @@ function Form() {
                 <textarea disabled={true}></textarea>
               ) : questionAnswerSet.answerType === "Radio" ? (
                 <div>
-                  <button onClick={() => addRadioOption(index)}>
-                    Add option
-                  </button>
                   {questionAnswerSet.options &&
                     questionAnswerSet.options.map((eachOption, optionIndex) => {
                       return (
                         <>
-                          {console.log(optionIndex)}
                           <div class="input-group col-md-4">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
@@ -233,17 +202,19 @@ function Form() {
                         </>
                       );
                     })}
+                  <button
+                    className="submit-button mb-10"
+                    onClick={() => addRadioOption(index)}
+                  >
+                    Add option
+                  </button>
                 </div>
               ) : questionAnswerSet.answerType === "Checked" ? (
                 <div>
-                  <button onClick={() => addRadioOption(index)}>
-                    Add option
-                  </button>
                   {questionAnswerSet.options &&
                     questionAnswerSet.options.map((eachOption, optionIndex) => {
                       return (
                         <>
-                          {console.log(optionIndex)}
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
@@ -271,11 +242,23 @@ function Form() {
                         </>
                       );
                     })}
+                  <button
+                    className="submit-button mb-10"
+                    onClick={() => addRadioOption(index)}
+                  >
+                    Add option
+                  </button>
                 </div>
               ) : null}
             </div>
           </div>
         ))}
+      <button
+        className="new-question"
+        onClick={() => addNewQuestionAnswerSet()}
+      >
+        Click to add new question.
+      </button>
       <Link to="/">
         <button className="submit-button" onClick={() => submitHandler()}>
           Submit

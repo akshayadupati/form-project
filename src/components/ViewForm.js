@@ -60,7 +60,6 @@ function ViewForm() {
   };
 
   const addRadioOption = (index) => {
-    console.log(questionAnswerSet);
     const changedQuestionAnswerSet = questionAnswerSet.map((qASet) => {
       if (index === qASet.index) {
         qASet = {
@@ -70,17 +69,14 @@ function ViewForm() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setQuestionAnswerSet(changedQuestionAnswerSet);
   };
 
   const handleRadioAnswer = (e, index, optionIndex) => {
-    console.log(e, index, optionIndex, questionAnswerSet, "insideee");
     const changedQuestionAnswerSet = data.map((qASet) => {
       if (index === qASet.index) {
         const mappedArray = qASet.options.map((eachOption, index) => {
           if (index === optionIndex) {
-            console.log("lala", e.target.value, eachOption);
             eachOption = { ...eachOption, checked: true };
           } else {
             eachOption = { ...eachOption, checked: false };
@@ -88,7 +84,6 @@ function ViewForm() {
           return eachOption;
         });
 
-        console.log("mapp", mappedArray);
         qASet = {
           ...qASet,
           options: mappedArray,
@@ -96,7 +91,6 @@ function ViewForm() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setData(changedQuestionAnswerSet);
   };
 
@@ -114,18 +108,15 @@ function ViewForm() {
   };
 
   const handleRadioTextAnswer = (e, index, optionIndex) => {
-    console.log(e, index, optionIndex, questionAnswerSet, "insideee");
     const changedQuestionAnswerSet = questionAnswerSet.map((qASet) => {
       if (index === qASet.index) {
         const mappedArray = qASet.options.map((eachOption, index) => {
           if (index === optionIndex) {
-            console.log("lala", e.target.value, eachOption);
             eachOption = { ...eachOption, value: e.target.value };
           }
           return eachOption;
         });
 
-        console.log("mapp", mappedArray);
         qASet = {
           ...qASet,
           options: mappedArray,
@@ -133,23 +124,19 @@ function ViewForm() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setQuestionAnswerSet(changedQuestionAnswerSet);
   };
 
   const handleCheckedAnswer = (e, index, optionIndex) => {
-    console.log(e, index, optionIndex, questionAnswerSet, "insideee");
     const changedQuestionAnswerSet = data.map((qASet) => {
       if (index === qASet.index) {
         const mappedArray = qASet.options.map((eachOption, index) => {
           if (index === optionIndex) {
-            console.log("lala", e.target.value, eachOption);
             eachOption = { ...eachOption, checked: true };
           }
           return eachOption;
         });
 
-        console.log("mapp", mappedArray);
         qASet = {
           ...qASet,
           options: mappedArray,
@@ -157,7 +144,6 @@ function ViewForm() {
       }
       return qASet;
     });
-    console.log(changedQuestionAnswerSet);
     setData(changedQuestionAnswerSet);
   };
 
@@ -189,7 +175,6 @@ function ViewForm() {
                     questionAnswerSet.options.map((eachOption, optionIndex) => {
                       return (
                         <>
-                          {console.log(optionIndex)}
                           <div class="input-group col-md-4">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
@@ -220,7 +205,6 @@ function ViewForm() {
                     questionAnswerSet.options.map((eachOption, optionIndex) => {
                       return (
                         <>
-                          {console.log(optionIndex)}
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
