@@ -7,6 +7,7 @@ import Form from "./components/Form";
 import ViewForm from "./components/ViewForm";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ListForm from "./components/ListForm";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const routerConfiguration = createBrowserRouter([
   {
