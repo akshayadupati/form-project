@@ -1,13 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.app-container {
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.new-question {
+  display: block;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.question-container {
+  display: block;
+  margin: 10px;
+}
+
+.question-container > input {
+  padding: 10px;
+  width: 50%;
+}
+
+.question-container > select {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.answer-container {
+  margin: 10px;
+}
+
+.answer-container > textarea {
+  width: 60%;
+  padding: 10px;
+}
+
+.answer-textbox {
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+}
+
+.submit-button {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-container > .card {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  height: 200px;
+  width: 200px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card { 
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
